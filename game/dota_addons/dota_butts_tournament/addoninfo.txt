@@ -1,0 +1,6 @@
+
+"AddonInfo"
+{
+	"EnablePickRules"                 "1"
+	"maps"                            "dota"
+}
