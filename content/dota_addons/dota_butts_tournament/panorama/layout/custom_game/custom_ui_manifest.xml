@@ -1,4 +1,7 @@
 <root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/HUDError.js" />
+	</scripts>
 	<Panel>
 		<CustomUIElement type="GameSetup"	layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 	</Panel>
