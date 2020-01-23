@@ -16,5 +16,5 @@ end
 function Activate()
 	GameRules:GetGameModeEntity():SetUseDefaultDOTARuneSpawnLogic(true)
 	GameRules:GetGameModeEntity():SetFreeCourierModeEnabled(true)
-
+	GameRules:GetGameModeEntity():SetTowerBackdoorProtectionEnabled(true)
 end
