@@ -11,5 +11,7 @@
 */dota_addons/dota_butts_tournament/*.bin
 #includes readonly
 
+game/dota_addons/dota_butts_tournament/panorama/**
+
 game/dota_addons/dota_butts_tournament/soundevents/**
 game/dota_addons/dota_butts_tournament/panorama_debugger.cfg
