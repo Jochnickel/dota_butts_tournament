@@ -1,5 +1,29 @@
 "DOTAAbilities" {
-	"firstItem" {
-		"ItemCost"						"2250"
+	"item_super_blink" {
+		"ID"							"1029"	
+		"AbilityName"					"item_super_blink"
+		"AbilityBehavior"				"DOA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"ItemPurchasable"				"1"
+		"ItemCost"						"10"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+
+		"SideShop"						"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range_clamp"		"960"
+			}
+		}
 	}
 }
