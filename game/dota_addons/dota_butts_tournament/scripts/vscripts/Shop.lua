@@ -21,20 +21,31 @@ for itemname,v in pairs(sideShopItems) do
 	end
 end
 
-function Shop:PayItem(playerID, itemname_or_ID)
+function Shop:PayItem(unit, itemname_or_ID)
 	if "number"==type(itemname_or_ID) then itemname_or_ID = nameByID[itemname_or_ID] end
-	if not sideShopItems[itemname_or_ID] then return false end
+	local playerID = unit:GetPlayerOwnerID()
 
-	if SideShop_not_in_range then return false end -- TODO
+	if not sideShopItems[itemname_or_ID] then
+		HUDError("PayItem: This shouldnt happen", playerID)
+		return false
+	end
+
+	if not Shop:UnitIsInRange(unit) then
+		HUDError("Shop Not In Range", playerID)
+		return false
+	end
 	
 	local itemcost = GetItemCost(itemname_or_ID)
-	if ButtCoin:ModifyPlayerCoins(playerID,-itemcost) then
+
+	if ButtCoin:ModifyPlayerCoins(playerID, -itemcost) then
 		return true
 	else
-		print(playerID,"Not enough coins to buy items")
-		HUDError(playerID,"Not enough coins to buy items")
+		HUDError("Not Enough Coins To Buy Item", playerID)
+		return false
 	end
+
 	return false
+
 end
 
 function Shop:IsSpecialShopItem(itemname_or_ID)
@@ -42,10 +53,7 @@ function Shop:IsSpecialShopItem(itemname_or_ID)
 	return nil~=sideShopItems[itemname_or_ID]
 end
 
-
-
--- GameRules:GetGameModeEntity():SetExecuteOrderFilter( InternalFilters.ExecuteOrderFilter, contxt )
-
--- unit:IsInRangeOfShop(int nShopType, bool bPhysical) 
-
--- print(shop:GetShopType())
+function Shop:UnitIsInRange(unit)
+	DOTA_SHOP_CUSTOM2 = DOTA_SHOP_CUSTOM2 or DOTA_SHOP_CUSTOM -- update proof
+	return unit:IsInRangeOfShop(DOTA_SHOP_CUSTOM, true) or unit:IsInRangeOfShop(DOTA_SHOP_CUSTOM2, true)
+end
